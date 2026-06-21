@@ -1,0 +1,13 @@
+---
+- hosts: all
+  tasks:
+    - name: install ftp server package
+      apt:
+        name: vsftpd
+        state: present
+        update_cache: yes   # This runs 'apt update' before installing
+    - name: start ftp service
+      service:
+        name: vsftpd
+        state: started
+        enabled: yes
